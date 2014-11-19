@@ -1,25 +1,18 @@
-//
-//  ViewController.swift
-//  SSAugmentedNavigationBar
-//
-//  Created by Sidney San Martín on 8/29/14.
-//  Copyright (c) 2014 s4y. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
-                            
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+    lazy override var navigationItem = SSAugmentedNavigationItem(
+        accessoryView: UISegmentedControl(items: ["Foo", "Bar", "Baz"])
+    )
+    
+    @IBAction func addSpace() {
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            (self.navigationController.navigationBar as SSAugmentedNavigationBar).extraSpace += 10
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+        })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
 }
 
